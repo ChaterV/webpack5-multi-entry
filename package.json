@@ -1,6 +1,6 @@
 {
   "name": "webpack-multi-entry",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "webpack4",
   "main": "index.js",
   "scripts": {
