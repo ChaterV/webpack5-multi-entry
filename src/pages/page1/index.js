@@ -2,11 +2,11 @@ import './index.scss'
 import '../../components/index/section1'
 import '../../components/index/section2'
 import '../../components/index/section3'
-
+import Vue from 'vue'
 
 Vue.component('index2', {
     template: (
-        `<div v-clock>
+        `<div v-cloak>
             <section1 
                 v-if="isSection1"
                 @showSection2="showSection2"

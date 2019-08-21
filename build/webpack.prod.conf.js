@@ -3,34 +3,36 @@ const webpack = require("webpack")
 const merge = require("webpack-merge")
 const cleanWebpackPlugin = require("clean-webpack-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const extractTextPlugin = require("extract-text-webpack-plugin")
+const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
 const webpackConfigBase = require('./webpack.base.conf')
 const TerserPlugin = require('terser-webpack-plugin')
 
 const webpackConfigProd = {
-    mode: 'production',
+	mode: 'production',
 
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		// 打包多出口文件
-        filename: 'js/[name].[hash].js',
-        publicPath: '../'
-    },
+		filename: 'js/[name].[chunkhash].js',
+		chunkFilename: 'js/[name].[chunkhash].js',
+		publicPath: '../'
+	},
 
-    devtool: 'cheap-module-eval-source-map',
+	devtool: 'cheap-module-eval-source-map',
 
 	plugins: [
 		new cleanWebpackPlugin(['dist'], {
-			root: path.resolve(__dirname, '../'),
-			verbose: true,
+			root: path.resolve(__dirname, '../'), //根目录
+			verbose: true, //开启在控制台输出信息
 			dry: false,
 		}),
 		new webpack.DefinePlugin({
 			'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"'
 		}),
 		// 分离css
-		new extractTextPlugin({
-			filename: 'css/[name].[hash:8].min.css',
+		new MiniCssExtractPlugin({
+			filename: 'css/[name].[contenthash].css',
+			chunkFilename: 'css/[name].[contenthash].css'
 		}),
 		//压缩css
 		new OptimizeCSSPlugin({
@@ -94,7 +96,7 @@ const webpackConfigProd = {
 						}
 					}
 				},
-			}),
+			})
 		],
 	}
 

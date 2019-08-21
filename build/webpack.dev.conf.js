@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require("webpack")
 const merge = require("webpack-merge")
 const webpackConfigBase = require('./webpack.base.conf')
 const webpackConfigDev = {
@@ -15,18 +14,18 @@ const webpackConfigDev = {
 		host: "0.0.0.0",
 		port: "8787",
 		overlay: true, // 浏览器页面上显示错误
-		// open: true, // 开启浏览器
+		open: true, // 开启浏览器
 		// stats: "errors-only", 只打印错误
-        proxy: {
-            '/': {
-                target: 'xxx',
-                secure: true,
-                changeOrigin: true,
-				pathRewrite: {
-					'^/': ''
-				}
-            }
-        }
+        // proxy: {
+        //     '/': {
+        //         target: 'www.baidu.com',
+        //         secure: true,
+        //         changeOrigin: true,
+		// 		pathRewrite: {
+		// 			'^/': ''
+		// 		}
+        //     }
+        // }
     },
 }
 module.exports = merge(webpackConfigBase, webpackConfigDev)

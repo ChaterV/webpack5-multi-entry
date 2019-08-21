@@ -1,14 +1,22 @@
-const extractTextPlugin = require("extract-text-webpack-plugin")
+const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
+const _dev = ["style-loader", "css-loader", "sass-loader", "postcss-loader"]
+const _pro = [
+    {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+            publicPath: '../',
+            hmr: process.env.NODE_ENV !== 'production',
+        }
+    },
+    'css-loader',
+    'postcss-loader',
+    'sass-loader',
+]
 const rules = [
     {
         test: /\.(css|scss|sass)$/,
         // 区别开发环境和生成环境
-        use: process.env.NODE_ENV === "development" ? ["style-loader", "css-loader", "sass-loader", "postcss-loader"] : extractTextPlugin.extract({
-            fallback: "style-loader",
-            use: ["css-loader", "sass-loader", "postcss-loader"],
-            // css中的基础路径
-            publicPath: "../"
-        })
+        use: process.env.NODE_ENV === "development" ? _dev : _pro
     },
     {
         test: /\.js$/,
