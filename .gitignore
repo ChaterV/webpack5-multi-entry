@@ -10,3 +10,5 @@ npm-debug.log*
 *.ntvs*
 *.njsproj
 *.sln
+*.sass-cache
+*.map
