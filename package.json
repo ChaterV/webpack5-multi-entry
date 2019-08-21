@@ -8,7 +8,8 @@
     "build": "npm run pro --m pro",
     "local": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.conf.js ",
     "pro": "cross-env webpack --config build/webpack.prod.conf.js",
-    "server": "live-server ./ --port=8888"
+    "server": "live-server ./ --port=8888",
+    "analyz": "NODE_ENV=production npm_config_report=true npm run build"
   },
   "author": "chaterV",
   "license": "ISC",
@@ -42,7 +43,7 @@
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.3.0",
     "url-loader": "^1.1.2",
-    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
     "webpack-merge": "^4.1.2"

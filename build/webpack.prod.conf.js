@@ -6,6 +6,7 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
 const webpackConfigBase = require('./webpack.base.conf')
 const TerserPlugin = require('terser-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const webpackConfigProd = {
 	mode: 'production',
@@ -34,12 +35,27 @@ const webpackConfigProd = {
 			filename: 'css/[name].[contenthash].css',
 			chunkFilename: 'css/[name].[contenthash].css'
 		}),
-		//压缩css
+		// 压缩css
 		new OptimizeCSSPlugin({
 			cssProcessorOptions: {
 				safe: true
 			}
 		}),
+		// 包分析
+		new BundleAnalyzerPlugin(
+			{
+				analyzerMode: 'server',
+				analyzerHost: '0.0.0.0',
+				analyzerPort: 7777,
+				reportFilename: 'report.html',
+				defaultSizes: 'parsed',
+				openAnalyzer: true,
+				generateStatsFile: false,
+				statsFilename: 'stats.json',
+				statsOptions: null,
+				logLevel: 'info'
+			}
+		)
 	],
 	optimization: {
 		minimizer: [
