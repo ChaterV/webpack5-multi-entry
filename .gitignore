@@ -2,6 +2,7 @@
 node_modules/
 md/
 dist/
+.sass-cache/
 npm-debug.log*
 # Editor directories and files
 .idea
@@ -10,5 +11,4 @@ npm-debug.log*
 *.ntvs*
 *.njsproj
 *.sln
-*.sass-cache
 *.map
