@@ -40,12 +40,24 @@ const rules = [
         }]
     },
     {
+        test: /\.(ico)$/,
+        use: [{
+            loader: 'url-loader',
+            options: {
+                limit: 10,
+                name: '[name].[ext]',
+                publicPath: "../static",
+                outputPath: "static"
+            }
+        }],
+    },
+    {
         test: /\.html$/,
         // html中的img标签
         use: {
             loader: 'html-loader',
             options: {
-                attrs: ['img:src', 'img:data-src', 'audio:src'],
+                attrs: ['img:src', 'img:data-src', 'audio:src', 'link:href'],
                 minimize: true
             }
         }
