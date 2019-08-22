@@ -1,5 +1,6 @@
 const path = require('path')
 const glob = require("glob")
+const webpack = require("webpack")
 
 require("./env-config")
 // html模板
@@ -86,6 +87,10 @@ module.exports = {
             to: './static',
             ignore: ['.*']
         }]),
+        new webpack.DefinePlugin({
+            'process.env': process.env.ENV_LIST,
+            'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"'
+        }),
     ]
 }
 

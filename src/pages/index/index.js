@@ -51,7 +51,7 @@ Vue.component('index', {
             this.isSection3 = true
         },
         toPage1() {
-            window.location.href = './page1.html'
+            window.location.href = './index.html'
         }
     }
 })

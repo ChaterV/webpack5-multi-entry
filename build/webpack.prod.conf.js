@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require("webpack")
 const merge = require("webpack-merge")
 const cleanWebpackPlugin = require("clean-webpack-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
@@ -26,9 +25,6 @@ const webpackConfigProd = {
 			root: path.resolve(__dirname, '../'), //根目录
 			verbose: true, //开启在控制台输出信息
 			dry: false,
-		}),
-		new webpack.DefinePlugin({
-			'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"'
 		}),
 		// 分离css
 		new MiniCssExtractPlugin({
