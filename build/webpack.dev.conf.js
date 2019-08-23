@@ -17,7 +17,8 @@ const webpackConfigDev = {
 		}),
   ],
 	devServer: {
-		contentBase: path.join(__dirname, "../src/pages/index"),
+    contentBase: path.join(__dirname, "../src/pages/page2/index"),
+    // openPage: 'page2.html', // 配置 run dev 默认打开哪个页面
 		publicPath:'/',
 		host: "0.0.0.0",
 		port: "8787",
