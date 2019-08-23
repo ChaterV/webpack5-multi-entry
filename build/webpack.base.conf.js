@@ -3,7 +3,10 @@ const glob = require("glob")
 const webpack = require("webpack")
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
+const entryConfig = require("./entry-config").ENTRY_CONF
+
 require("./env-config")
+// console.log('------- ', process.env.BASE_URL, ' ----------')
 // html模板
 const htmlWebpackPlugin = require("html-webpack-plugin")
 //静态资源输出
@@ -12,9 +15,23 @@ const rules = require("./webpack.rules.conf.js")
 
 // 获取html-webpack-plugin参数的方法
 const getHtmlConfig = function (name, chunks) {
+    // console.log('------ ', name, ' --------------')
+    // console.log(chunks)
+    // 指定 html模板名
+    // const templateName = entryConfig[name].html.slice(0, -5)
+    // 不指定 html模板名 - 默认为模块名
+    // let templateName = name
+    // glob.sync(`./src/pages/${name}/*.html`)
+    //     .forEach(function (htmlName) {
+    //         // console.log('----',htmlName)
+    //         templateName = htmlName.slice(htmlName.lastIndexOf('/') + 1, -5)
+    //     })
+    // 默认 html 模板名是 index.html
+    const templateName = 'index'
     return {
-        template: `./src/pages/${name}/index.html`,
-        filename: process.env.NODE_ENV === "development"? `${name.slice(name.lastIndexOf('/') + 1)}.html`:`html/${name.slice(name.lastIndexOf('/') + 1)}.html`,
+        template: `./src/pages/${name}/${templateName}.html`,
+        // filename: process.env.NODE_ENV === "development"? `${name.slice(name.lastIndexOf('/') + 1)}.html`:`html/${name.slice(name.lastIndexOf('/') + 1)}.html`,
+        filename: process.env.NODE_ENV === "development"? `${name}.html`:`html/${name}.html`,
         inject: true,
         hash: false, //开启hash  ?[hash]
         chunks: chunks,
@@ -28,18 +45,30 @@ const getHtmlConfig = function (name, chunks) {
 
 function getEntry() {
     let entry = {}
+    
     //读取src目录所有page入口
-    glob.sync('./src/pages/**/*.js')
-        .forEach(function (name) {
-            let start = name.indexOf('src/') + 4,
-                end = name.length - 3
-            let eArr = []
-            let n = name.slice(start, end)
-            n = n.slice(0, n.lastIndexOf('/')) //保存各个组件的入口
-            n = n.split('pages/')[1]
-            eArr.push(name)
-            entry[n] = eArr
-        })
+    // glob.sync('./src/pages/**/*.js')
+    //     .forEach(function (name) {
+    //         let start = name.indexOf('src/') + 4,
+    //             end = name.length - 3
+    //         let eArr = []
+    //         let n = name.slice(start, end)
+    //         n = n.slice(0, n.lastIndexOf('/')) //保存各个组件的入口
+    //         n = n.split('pages/')[1]
+    //         eArr.push(name)
+    //         entry[n] = eArr
+    //     })
+    Object.keys(entryConfig).forEach(chunkName => {
+      const entryJsName = entryConfig[chunkName].js.slice(0, -3)
+      const path = `./src/pages/${chunkName}/${entryJsName}.js`
+      entry[chunkName] = [path]
+    })
+    // console.log('------ entryObj --------------')
+    // console.log(entry)
+    // {
+    //   index: ['./src/pages/index/index.js'],
+    //   page1: ['./src/pages/page1/page1.js'],
+    // }
     return entry
 }
 

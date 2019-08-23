@@ -1,13 +1,21 @@
 const path = require('path')
 const merge = require("webpack-merge")
 const webpackConfigBase = require('./webpack.base.conf')
+const webpack = require("webpack")
+// console.log('--------,',process.env.BASE_URL)
 const webpackConfigDev = {
 	mode: 'development',
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		// 打包多出口文件
 		filename: 'js/[name].bundle.js'
-	},
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {},
+			'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"'
+		}),
+  ],
 	devServer: {
 		contentBase: path.join(__dirname, "../src/pages/index"),
 		publicPath:'/',
