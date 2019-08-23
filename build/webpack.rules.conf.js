@@ -1,6 +1,9 @@
 const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
 const _dev = ["style-loader", "css-loader", 'postcss-loader', "sass-loader"]
 const _pro = [
+  // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/275
+  // mini-css-extract-plugin 插件打包分离 css ，生成环境会丢掉 .vue 文件里面的 <style>里面的 css 问题：
+  // 解决：删除 package.json 里面的 sideEffects 配置就可以了
     {
         loader: MiniCssExtractPlugin.loader,
         options: {
