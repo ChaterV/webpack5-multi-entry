@@ -1,12 +1,10 @@
-import './index.scss'
+import './page1.scss'
 import '../../components/index/section1'
 import '../../components/index/section2'
 import '../../components/index/section3'
-
 import Vue from 'vue'
 
-
-Vue.component('index', {
+Vue.component('index2', {
     template: (
         `<div v-cloak>
             <section1 
@@ -21,7 +19,8 @@ Vue.component('index', {
                 v-if="isSection3"
                 @showSection1="showSection1"
             />
-            <button @click="toPage1">to page1</button>
+            <button @click="toPage2">to page2</button>
+            <button @click="toIndex">to index</button>
         </div>`
     ),
     data() {
@@ -32,9 +31,7 @@ Vue.component('index', {
         }
     },
     mounted() {
-      console.log('process:', process)
-      console.log('process.env:', process.env)
-      console.log('process.env.BASE_URL:', process.env.BASE_URL)
+
     },
     methods: {
         showSection1() {
@@ -52,9 +49,12 @@ Vue.component('index', {
             this.isSection2 = false
             this.isSection3 = true
         },
-        toPage1() {
-            window.location.href = './page1.html'
-        }
+        toPage2() {
+            window.location.href = './page2.html'
+        },
+        toIndex() {
+            window.location.href = './index.html'
+        },
     }
 })
 new Vue({
