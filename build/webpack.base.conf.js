@@ -43,32 +43,33 @@ const getHtmlConfig = function (name, chunks) {
     }
 }
 
+function globs(entry) {
+    // 读取src目录所有page入口
+    glob.sync('./src/pages/**/*.js')
+        .forEach(function (name) {
+            let start = name.indexOf('src/') + 4,
+                end = name.length - 3
+            let eArr = []
+            let n = name.slice(start, end)
+            n = n.slice(0, n.lastIndexOf('/')) //保存各个组件的入口
+            n = n.split('pages/')[1]
+            eArr.push(name)
+            entry[n] = eArr
+        })
+    return entry
+}
 function getEntry() {
     let entry = {}
-    
-    //读取src目录所有page入口
-    // glob.sync('./src/pages/**/*.js')
-    //     .forEach(function (name) {
-    //         let start = name.indexOf('src/') + 4,
-    //             end = name.length - 3
-    //         let eArr = []
-    //         let n = name.slice(start, end)
-    //         n = n.slice(0, n.lastIndexOf('/')) //保存各个组件的入口
-    //         n = n.split('pages/')[1]
-    //         eArr.push(name)
-    //         entry[n] = eArr
-    //     })
-    Object.keys(entryConfig).forEach(chunkName => {
-      const entryJsName = entryConfig[chunkName].js.slice(0, -3)
-      const path = `./src/pages/${chunkName}/${entryJsName}.js`
-      entry[chunkName] = [path]
-    })
-    // console.log('------ entryObj --------------')
-    // console.log(entry)
-    // {
-    //   index: ['./src/pages/index/index.js'],
-    //   page1: ['./src/pages/page1/page1.js'],
-    // }
+    if(Object.keys(entryConfig).length !== 0) {
+        globs(entry)
+        Object.keys(entryConfig).forEach(chunkName => {
+            const entryJsName = entryConfig[chunkName].js ? entryConfig[chunkName].js.slice(0, -3) : 'index'
+            const path = `./src/pages/${chunkName}/${entryJsName}.js`
+            entry[chunkName] = [path]
+        })
+    } else {
+        globs(entry)
+    }
     return entry
 }
 
