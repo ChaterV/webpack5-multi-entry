@@ -6,6 +6,7 @@ const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
 const webpackConfigBase = require('./webpack.base.conf')
 const TerserPlugin = require('terser-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleReport = process.env.npm_config_report
 
 const webpackConfigProd = {
 	mode: 'production',
@@ -37,21 +38,6 @@ const webpackConfigProd = {
 				safe: true
 			}
 		}),
-		// 包分析
-		new BundleAnalyzerPlugin(
-			{
-				analyzerMode: 'server',
-				analyzerHost: '0.0.0.0',
-				analyzerPort: 7777,
-				reportFilename: 'report.html',
-				defaultSizes: 'parsed',
-				openAnalyzer: true,
-				generateStatsFile: false,
-				statsFilename: 'stats.json',
-				statsOptions: null,
-				logLevel: 'info'
-			}
-		)
 	],
 	optimization: {
 		minimizer: [
@@ -111,6 +97,25 @@ const webpackConfigProd = {
 			})
 		],
 	}
+}
 
+// 包分析
+if(BundleReport) {
+	webpackConfigProd.plugins.push(
+		new BundleAnalyzerPlugin(
+			{
+				analyzerMode: 'server',
+				analyzerHost: '0.0.0.0',
+				analyzerPort: 7777,
+				reportFilename: 'report.html',
+				defaultSizes: 'parsed',
+				openAnalyzer: true,
+				generateStatsFile: false,
+				statsFilename: 'stats.json',
+				statsOptions: null,
+				logLevel: 'info'
+			}
+		)
+	)
 }
 module.exports = merge(webpackConfigBase, webpackConfigProd)

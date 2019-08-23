@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
-const _dev = ["style-loader", "css-loader", "sass-loader", "postcss-loader"]
+const _dev = ["style-loader", "css-loader", 'postcss-loader', "sass-loader"]
 const _pro = [
     {
         loader: MiniCssExtractPlugin.loader,
