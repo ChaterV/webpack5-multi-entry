@@ -20,11 +20,22 @@ const rules = [
     },
     {
         test: /\.js$/,
+        exclude: "/node_modules/",
         use: [{
             loader: "babel-loader"
         }],
         // 不检查node_modules下的js文件
         // exclude: "/node_modules/"
+    },
+    {
+        test: /\.vue$/,
+        exclude: /^node_modules$/,
+        loader: 'vue-loader'
+    },
+    {
+        test: /\.json$/,
+        exclude: /^node_modules$/,
+        loader: "json-loader"
     },
     {
         test: /\.(png|jpg|gif)$/,
@@ -40,12 +51,24 @@ const rules = [
         }]
     },
     {
+        test: /\.(ico)$/,
+        use: [{
+            loader: 'url-loader',
+            options: {
+                limit: 10,
+                name: '[name].[ext]',
+                publicPath: "../static",
+                outputPath: "static"
+            }
+        }],
+    },
+    {
         test: /\.html$/,
         // html中的img标签
         use: {
             loader: 'html-loader',
             options: {
-                attrs: ['img:src', 'img:data-src', 'audio:src'],
+                attrs: ['img:src', 'img:data-src', 'audio:src', 'link:href'],
                 minimize: true
             }
         }

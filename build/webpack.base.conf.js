@@ -1,5 +1,7 @@
 const path = require('path')
 const glob = require("glob")
+const webpack = require("webpack")
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const entryConfig = require("./entry-config").ENTRY_CONF
 
@@ -76,6 +78,7 @@ module.exports = {
         rules: [...rules]
     },
     resolve: {
+        extensions: ['.js', '.vue', '.json'],
         alias: {
             '@': path.resolve(__dirname, '../src'),
             'vue$': 'vue/dist/vue.esm.js'
@@ -115,6 +118,11 @@ module.exports = {
             to: './static',
             ignore: ['.*']
         }]),
+        new webpack.DefinePlugin({
+            'process.env': process.env.ENV_LIST,
+            'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"'
+        }),
+        new VueLoaderPlugin()
     ]
 }
 
