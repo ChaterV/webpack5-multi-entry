@@ -1,6 +1,7 @@
 const path = require('path')
 const glob = require("glob")
 const webpack = require("webpack")
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 require("./env-config")
 // html模板
@@ -48,6 +49,7 @@ module.exports = {
         rules: [...rules]
     },
     resolve: {
+        extensions: ['.js', '.vue', '.json'],
         alias: {
             '@': path.resolve(__dirname, '../src'),
             'vue$': 'vue/dist/vue.esm.js'
@@ -91,6 +93,7 @@ module.exports = {
             'process.env': process.env.ENV_LIST,
             'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"'
         }),
+        new VueLoaderPlugin()
     ]
 }
 

@@ -20,11 +20,22 @@ const rules = [
     },
     {
         test: /\.js$/,
+        exclude: "/node_modules/",
         use: [{
             loader: "babel-loader"
         }],
         // 不检查node_modules下的js文件
         // exclude: "/node_modules/"
+    },
+    {
+        test: /\.vue$/,
+        exclude: /^node_modules$/,
+        loader: 'vue-loader'
+    },
+    {
+        test: /\.json$/,
+        exclude: /^node_modules$/,
+        loader: "json-loader"
     },
     {
         test: /\.(png|jpg|gif)$/,
