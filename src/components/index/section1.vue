@@ -15,6 +15,8 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    //.add{
+     //   background-color: red;
+    //}
 </style>
