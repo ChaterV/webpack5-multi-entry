@@ -59,7 +59,7 @@ function getEntry() {
     //         entry[n] = eArr
     //     })
     Object.keys(entryConfig).forEach(chunkName => {
-      const entryJsName = entryConfig[chunkName].js.slice(0, -3)
+      const entryJsName = entryConfig[chunkName].js ? entryConfig[chunkName].js.slice(0, -3) : 'index'
       const path = `./src/pages/${chunkName}/${entryJsName}.js`
       entry[chunkName] = [path]
     })

@@ -15,8 +15,8 @@ const ENTRY_CONF = {
     js: 'page1.js'
   },
   'page2': {
-    // html: 'zzz.html',
-    js: 'main.js'
+    // html: 'page2.html',
+    // js: 'index.js'
   },
 }
 
