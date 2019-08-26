@@ -3,7 +3,9 @@ const glob = require("glob")
 const webpack = require("webpack")
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-const entryConfig = require("./entry-config").ENTRY_CONF
+const EC = require("./entry-config")
+const entryConfig = EC.ENTRY_CONF       // 多页面指定入口 js 配置
+const templateConfig = EC.TEMPLATE_CONF   // 多页面指定 html 模板配置
 
 require("./env-config")
 // console.log('------- ', process.env.BASE_URL, ' ----------')
@@ -12,13 +14,12 @@ const htmlWebpackPlugin = require("html-webpack-plugin")
 //静态资源输出
 const copyWebpackPlugin = require("copy-webpack-plugin")
 const rules = require("./webpack.rules.conf.js")
-
 // 获取html-webpack-plugin参数的方法
 const getHtmlConfig = function (name, chunks) {
     // console.log('------ ', name, ' --------------')
     // console.log(chunks)
     // 指定 html模板名
-    // const templateName = entryConfig[name].html.slice(0, -5)
+    // const templateName = templateConfig[name].html.slice(0, -5)
     // 不指定 html模板名 - 默认为模块名
     // let templateName = name
     // glob.sync(`./src/pages/${name}/*.html`)
