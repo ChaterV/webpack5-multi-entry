@@ -1,17 +1,18 @@
 <template>
     <div v-cloak>
-        <section1
-                v-if="isSection1"
-                @showSection2="showSection2"
-        />
-        <section2
-                v-if="isSection2"
-                @showSection3="showSection3"
-        />
-        <section3
-                v-if="isSection3"
-                @showSection1="showSection1"
-        />
+<!--        <section1-->
+<!--                v-if="isSection1"-->
+<!--                @showSection2="showSection2"-->
+<!--        />-->
+<!--        <section2-->
+<!--                v-if="isSection2"-->
+<!--                @showSection3="showSection3"-->
+<!--        />-->
+<!--        <section3-->
+<!--                v-if="isSection3"-->
+<!--                @showSection1="showSection1"-->
+<!--        />-->
+        <router-view></router-view>
         <button @click="toPage1">to page1</button>
     </div>
 </template>
@@ -49,7 +50,8 @@
                 this.isSection3 = true
             },
             toPage1() {
-                window.location.href = './index.html'
+                // window.location.href = './index.html#/aaa'
+                this.$router.push('/aaa')
             }
         }
     }
