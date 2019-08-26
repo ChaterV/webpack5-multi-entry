@@ -11,7 +11,7 @@ const PAGE_ROUTER = [
     meta: { // 路由元 信息
       useTemplate: false,     // 是否指定 html 模板
       useEntry: false,        // 是否指定入口 js
-      isDevIndexPage: true,   // 是否 为 npm run dev 时默认打开的页面
+      isDevIndexPage: false,   // 是否 为 npm run dev 时默认打开的页面
     },
   },
   {
@@ -31,7 +31,7 @@ const PAGE_ROUTER = [
     meta: {
       useTemplate: false,
       useEntry: false,
-      isDevIndexPage: false,
+      isDevIndexPage: true,
     },
   },
 ]
@@ -56,15 +56,31 @@ const ENTRY_CONF = {
 // 指定html 模板配置
 const TEMPLATE_CONF = {}
 
-// PAGE_ROUTER.map( v => {
-//   if (v.meta.useTemplate) {
-//     TEMPLATE_CONF[v.name] = {
-//       html
-//     }
-//   }
-// })
-
 // 配置 npm run dev 默认打开哪个页面
-const OPEN_PAGE = ''
+let DEV_OPEN_PAGE = ''
+
+PAGE_ROUTER.map( v => {
+  if (v.meta.useTemplate) {
+    TEMPLATE_CONF[v.name] = {
+      html: v.template
+    }
+  }
+  if (v.meta.useEntry) {
+    ENTRY_CONF[v.name] = {
+      js: v.entry
+    }
+  }
+  // 取第一个 isDevIndexPage=true 的页面
+  if (v.meta.isDevIndexPage && DEV_OPEN_PAGE === '') {
+    DEV_OPEN_PAGE = `${v.name}.html`
+  }
+})
+
+// console.log('-------')
+// console.log('ENTRY_CONF:', ENTRY_CONF)
+// console.log('TEMPLATE_CONF:', TEMPLATE_CONF)
+// console.log('DEV_OPEN_PAGE:', DEV_OPEN_PAGE)
 
 module.exports.ENTRY_CONF = ENTRY_CONF
+module.exports.TEMPLATE_CONF = TEMPLATE_CONF
+module.exports.DEV_OPEN_PAGE = DEV_OPEN_PAGE
