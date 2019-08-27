@@ -14,9 +14,9 @@ const webpackConfigProd = {
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		// 打包多出口文件
-		filename: 'static/js/[name].[chunkhash].js',
-		chunkFilename: 'static/js/[name].[chunkhash].js',
-		publicPath: '../'
+		filename: './static/js/[name].[chunkhash].js',
+		chunkFilename: './static/js/[name].[chunkhash].js',
+		publicPath: './'
 	},
 
 	devtool: 'cheap-module-eval-source-map',
@@ -29,8 +29,8 @@ const webpackConfigProd = {
 		}),
 		// 分离css
 		new MiniCssExtractPlugin({
-			filename: 'static/css/[name].[contenthash].css',
-			chunkFilename: 'static/css/[name].[contenthash].css'
+			filename: './static/css/[name].[contenthash].css',
+			chunkFilename: './static/css/[name].[contenthash].css'
 		}),
 		// 压缩css
 		new OptimizeCSSPlugin({

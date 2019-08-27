@@ -49,7 +49,7 @@ const rules = [
                 limit: 10, //小于这个时将会已base64位图片打包处理
                 name: '[name].[hash:5].[ext]',
                 // 图片文件输出的文件夹
-                publicPath: "../static/img",
+                publicPath: "./static/img",
                 outputPath: "static/img"
             }
         }]
@@ -61,7 +61,7 @@ const rules = [
             options: {
                 name: "[name].[hash:5].[ext]",
                 limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
-                publicPath: "../static/fonts",
+                publicPath: "./static/fonts",
                 outputPath: "static/fonts"
             }
         }]
@@ -75,7 +75,7 @@ const rules = [
                 limit: 5000,
                 name: '[name].[hash:5].[ext]',
                 // 文件输出的文件夹
-                publicPath: "../static/media",
+                publicPath: "./static/media",
                 outputPath: "static/media"
             }
         }]
