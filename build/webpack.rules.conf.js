@@ -7,7 +7,10 @@ const _pro = [
     {
         loader: MiniCssExtractPlugin.loader,
         options: {
-            publicPath: '../',
+            // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/403
+            // 这里的 publicPath 和 url-loader / file-loader 的 publicPath 有冲突
+            // ....., when I remove file-loader's publicPath everything works fine
+            publicPath: '../../',
             hmr: process.env.NODE_ENV !== 'production',
         }
     },
@@ -21,7 +24,7 @@ const _pro = [
 const rules = [
     {
         test: /\.scss$/,
-        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+        use: [ 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader' ]
     },
     {
         // test: /\.(css|scss|sass)$/,
@@ -57,7 +60,7 @@ const rules = [
                 limit: 10, //小于这个时将会已base64位图片打包处理
                 name: '[name].[hash:5].[ext]',
                 // 图片文件输出的文件夹
-                publicPath: "./static/img",
+                // publicPath: "./static/img",
                 outputPath: "static/img"
             }
         }]
@@ -69,7 +72,7 @@ const rules = [
             options: {
                 name: "[name].[hash:5].[ext]",
                 limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
-                publicPath: "./static/fonts",
+                // publicPath: "./static/fonts",
                 outputPath: "static/fonts"
             }
         }]
@@ -83,7 +86,7 @@ const rules = [
                 limit: 5000,
                 name: '[name].[hash:5].[ext]',
                 // 文件输出的文件夹
-                publicPath: "./static/media",
+                // publicPath: "./static/media",
                 outputPath: "static/media"
             }
         }]
@@ -95,7 +98,7 @@ const rules = [
             options: {
                 limit: 10,
                 name: '[name].[ext]',
-                publicPath: "./",
+                // publicPath: "./",
                 outputPath: ""
             }
         }],
