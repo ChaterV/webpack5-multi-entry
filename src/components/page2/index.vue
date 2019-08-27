@@ -80,11 +80,10 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-#page2 {
+<style scoped>
   h3 {
     color: #f74b57;
-    // font-size: 30px;
+  // font-size: 30px;
     text-align: center;
   }
   .imgs {
@@ -107,5 +106,4 @@ export default {
     color: #f74b57;
     text-align: center;
   }
-}
 </style>

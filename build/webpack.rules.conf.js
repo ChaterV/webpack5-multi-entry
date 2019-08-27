@@ -1,31 +1,23 @@
 const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
 const _dev = ["style-loader", "css-loader", 'postcss-loader', "sass-loader"]
 const _pro = [
-  // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/275
-  // mini-css-extract-plugin 插件打包分离 css ，生成环境会丢掉 .vue 文件里面的 <style>里面的 css 问题：
-  // 解决：删除 package.json 里面的 sideEffects 配置就可以了
+    // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/275
+    // mini-css-extract-plugin 插件打包分离 css ，生成环境会丢掉 .vue 文件里面的 <style>里面的 css 问题：
+    // 解决：删除 package.json 里面的 sideEffects 配置就可以了
     {
         loader: MiniCssExtractPlugin.loader,
         options: {
-            publicPath: '../',
+            publicPath: '../../',
             hmr: process.env.NODE_ENV !== 'production',
         }
     },
-    {
-        loader: 'css-loader'
-    },
-    // 'css-loader',
-    // 'postcss-loader',
-    // 'sass-loader',
+    'css-loader',
+    'postcss-loader',
+    'sass-loader'
 ]
 const rules = [
     {
-        test: /\.scss$/,
-        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-    },
-    {
-        // test: /\.(css|scss|sass)$/,
-        test: /\.css$/,
+        test: /\.(css|scss|sass)$/,
         // 区别开发环境和生成环境
         use: process.env.NODE_ENV === "development" ? _dev : _pro
     },
@@ -57,7 +49,7 @@ const rules = [
                 limit: 10, //小于这个时将会已base64位图片打包处理
                 name: '[name].[hash:5].[ext]',
                 // 图片文件输出的文件夹
-                publicPath: "./static/img",
+                // publicPath: "./static/img",
                 outputPath: "static/img"
             }
         }]
@@ -69,7 +61,7 @@ const rules = [
             options: {
                 name: "[name].[hash:5].[ext]",
                 limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
-                publicPath: "./static/fonts",
+                // publicPath: "./static/fonts",
                 outputPath: "static/fonts"
             }
         }]
@@ -83,7 +75,7 @@ const rules = [
                 limit: 5000,
                 name: '[name].[hash:5].[ext]',
                 // 文件输出的文件夹
-                publicPath: "./static/media",
+                // publicPath: "./static/media",
                 outputPath: "static/media"
             }
         }]
@@ -95,7 +87,7 @@ const rules = [
             options: {
                 limit: 10,
                 name: '[name].[ext]',
-                publicPath: "./",
+                // publicPath: "./",
                 outputPath: ""
             }
         }],
