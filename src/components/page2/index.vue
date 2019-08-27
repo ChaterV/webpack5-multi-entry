@@ -14,8 +14,23 @@
       <button class="m_btn">播放音频</button>
     </div>
     <div class="imgs">
-      <h5>image:</h5>
-      <img src="../../assets/img/timg.jpg" alt="">
+      <h5>html image:</h5>
+      <img src="../../assets/images/timg.jpg" alt="">
+    </div>
+    <div class="bg">
+      <h5>css background image</h5>
+    </div>
+    <div class="imgs jsimg">
+      <h5>js image data return string:</h5>
+      <img :src="img1" alt="">
+    </div>
+    <div class="imgs jsimg">
+      <h5>js image import from ../../assets/.... :</h5>
+      <img :src="img2" alt="">
+    </div>
+    <div class="imgs jsimg">
+      <h5>js image import from @/assets/.... :</h5>
+      <img :src="img3" alt="">
     </div>
   </div>
 </template>
@@ -23,12 +38,19 @@
 <script>
 import Vue from 'vue';
 import audio from '../../assets/biubiu.mp3';
+import img2 from '../../assets/images/timg.jpg';
+import img3 from '@/assets/images/timg.jpg';
 export default {
   name: '',
   props: [],
   components: {},
   data() {
-    return {}
+    return {
+      // img1: '../../assets/images/timg.jpg', // 这样不行，需要绝对路径 
+      img1: 'https://i0.hdslb.com/bfs/sycp/creative_img/201908/aaedb6814f66e5d9c8613fc77d5da806.jpg',
+      img2: img2,
+      img3: img3
+    }
   },
   created() {
     console.log(process.env)
@@ -63,6 +85,7 @@ export default {
   h3 {
     color: #f74b57;
     // font-size: 30px;
+    text-align: center;
   }
   .imgs {
     margin: 10px;
@@ -73,6 +96,16 @@ export default {
   }
   #buttonAudio {
     display: none;
+  }
+  .bg {
+    margin: 10px auto;
+    width: 500px;
+    height: 300px;
+    background: url(../../assets/images/timg.jpg) no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    color: #f74b57;
+    text-align: center;
   }
 }
 </style>

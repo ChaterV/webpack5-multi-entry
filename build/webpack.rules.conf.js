@@ -7,7 +7,7 @@ const _pro = [
     {
         loader: MiniCssExtractPlugin.loader,
         options: {
-            publicPath: '../',
+            // publicPath: '../../',
             hmr: process.env.NODE_ENV !== 'production',
         }
     },
@@ -49,7 +49,7 @@ const rules = [
                 limit: 10, //小于这个时将会已base64位图片打包处理
                 name: '[name].[hash:5].[ext]',
                 // 图片文件输出的文件夹
-                publicPath: "./static/img",
+                publicPath: "../../static/img",
                 outputPath: "static/img"
             }
         }]
