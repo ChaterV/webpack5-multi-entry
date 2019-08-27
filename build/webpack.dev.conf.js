@@ -22,6 +22,8 @@ const webpackConfigDev = {
 		port: "8787",
 		overlay: true, // 浏览器页面上显示错误
 		open: true, // 开启浏览器
+		stats: 'none',
+		hot: true
 		// stats: "errors-only", 只打印错误
         // proxy: {
         //     '/': {
@@ -34,5 +36,8 @@ const webpackConfigDev = {
         //     }
         // }
     },
+	plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	]
 }
 module.exports = merge(webpackConfigBase, webpackConfigDev)

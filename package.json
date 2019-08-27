@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run local --m local",
     "build": "npm run pro --m pro",
-    "local": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --content-base  --config build/webpack.dev.conf.js ",
+    "local": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.conf.js ",
     "pro": "cross-env webpack --config build/webpack.prod.conf.js",
     "server": "live-server ./ --port=8888",
     "analyz": "NODE_ENV=production npm_config_report=true npm run pro"
