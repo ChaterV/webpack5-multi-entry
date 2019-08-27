@@ -47,9 +47,36 @@ const rules = [
             loader: "url-loader",
             options: {
                 limit: 10, //小于这个时将会已base64位图片打包处理
+                name: '[name].[hash:5].[ext]',
                 // 图片文件输出的文件夹
-                publicPath: "../images",
-                outputPath: "images"
+                publicPath: "../static/img",
+                outputPath: "static/img"
+            }
+        }]
+    },
+    {
+        test: /\.(eot|woff2?|ttf|svg)$/,
+        use: [{
+            loader: "url-loader",
+            options: {
+                name: "[name].[hash:5].[ext]",
+                limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
+                publicPath: "../static/fonts",
+                outputPath: "static/fonts"
+            }
+        }]
+    },
+    {
+        test: /\.(mp3|mp4)$/,
+        use: [{
+            // 需要下载url-loader
+            loader: "url-loader",
+            options: {
+                limit: 5000,
+                name: '[name].[hash:5].[ext]',
+                // 文件输出的文件夹
+                publicPath: "../static/media",
+                outputPath: "static/media"
             }
         }]
     },
@@ -60,8 +87,8 @@ const rules = [
             options: {
                 limit: 10,
                 name: '[name].[ext]',
-                publicPath: "../static",
-                outputPath: "static"
+                publicPath: "./",
+                outputPath: ""
             }
         }],
     },

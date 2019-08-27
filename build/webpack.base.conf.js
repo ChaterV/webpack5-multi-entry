@@ -32,7 +32,7 @@ const getHtmlConfig = function (name, chunks) {
     return {
         template: `./src/pages/${name}/${templateName}.html`,
         // filename: process.env.NODE_ENV === "development"? `${name.slice(name.lastIndexOf('/') + 1)}.html`:`html/${name.slice(name.lastIndexOf('/') + 1)}.html`,
-        filename: process.env.NODE_ENV === "development"? `${name}.html`:`html/${name}.html`,
+        filename: `${name}.html`,
         inject: true,
         hash: false, //开启hash  ?[hash]
         chunks: chunks,
@@ -41,12 +41,13 @@ const getHtmlConfig = function (name, chunks) {
             collapseWhitespace: true, //折叠空白区域 也就是压缩代码
             removeAttributeQuotes: true, //去除属性引用
         },
+        // favicon: './src/static/favicon.ico', // 网站图标
     }
 }
 
 function globs(entry) {
     // 读取src目录所有page入口
-    glob.sync('./src/pages/**/*.js')
+    glob.sync('./src/pages/**/index.js')
         .forEach(function (name) {
             let start = name.indexOf('src/') + 4,
                 end = name.length - 3
@@ -115,11 +116,11 @@ module.exports = {
     },
     plugins: [
         //静态资源输出
-        new copyWebpackPlugin([{
-            from: path.resolve(__dirname, "../src/static"),
-            to: './static',
-            ignore: ['.*']
-        }]),
+        // new copyWebpackPlugin([{
+        //     from: path.resolve(__dirname, "../src/static"),
+        //     to: './static',
+        //     ignore: ['.*']
+        // }]),
         new webpack.DefinePlugin({
             'process.env': process.env.ENV_LIST,
             'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"'
