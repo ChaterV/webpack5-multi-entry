@@ -19,7 +19,7 @@ const webpackConfigProd = {
 		publicPath: './'
 	},
 
-	devtool: 'cheap-module-eval-source-map',
+	devtool: 'cheap-module-source-map',
 
 	plugins: [
 		new cleanWebpackPlugin(['dist'], {

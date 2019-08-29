@@ -35,6 +35,7 @@ const webpackConfigDev = {
 		// 打包多出口文件
 		filename: 'js/[name].bundle.js'
   },
+    devtool: 'cheap-module-eval-source-map',
 	devServer: {
     contentBase: path.join(__dirname, "../src/pages/index"),
     openPage: devOpenPage || 'index.html', // 配置 run dev 默认打开哪个页面
