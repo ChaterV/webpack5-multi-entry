@@ -51,7 +51,7 @@ function globs(entry) {
         .forEach(function (name) {
             let start = name.indexOf('src/') + 4,
                 end = name.length - 3
-            let eArr = []
+            let eArr = ["babel-polyfill"]
             let n = name.slice(start, end)
             n = n.slice(0, n.lastIndexOf('/')) //保存各个组件的入口
             n = n.split('pages/')[1]
