@@ -11,7 +11,7 @@ const _pro = [
             // 这里的 publicPath 和 url-loader / file-loader 的 publicPath 有冲突
             // ....., when I remove file-loader's publicPath everything works fine
             publicPath: '../../',
-            hmr: process.env.NODE_ENV !== 'production',
+            // hmr: process.env.NODE_ENV !== 'production',
         }
     },
     'css-loader',
@@ -91,7 +91,7 @@ const rules = [
                 limit: 10,
                 name: '[name].[ext]',
                 // publicPath: "./",
-                outputPath: ""
+                outputPath: "static/icon"
             }
         }],
     },
@@ -101,9 +101,37 @@ const rules = [
         use: {
             loader: 'html-loader',
             options: {
-                attrs: ['img:src', 'img:data-src', 'audio:src', 'link:href'],
-                minimize: true
-            }
+                // attributes: false,
+                    attributes: {
+                        list: [
+                            '...',
+                            {
+                                tag: 'link',
+                                attribute: 'href',
+                                type: 'src',
+                            }
+                        ]
+                    },
+                minimize: true,
+            },
+            // options: {
+            //     attributes: {
+            //         list: [
+            //             '...',
+            //             {
+            //                 tag: 'img',
+            //                 attribute: 'data-src',
+            //                 type: 'src',
+            //             },
+            //             {
+            //                 tag: 'img',
+            //                 attribute: 'data-src',
+            //                 type: 'src',
+            //             }
+            //         ]
+            //     },
+            //
+            // }
         }
     }
 ]

@@ -48,7 +48,7 @@ export default {
     return {
       // img1: '../../assets/images/timg.jpg', // 这样不行，需要绝对路径
       img1:
-        "https://i0.hdslb.com/bfs/sycp/creative_img/201908/aaedb6814f66e5d9c8613fc77d5da806.jpg",
+        "https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2992289201,1546493273&fm=26&gp=0.jpg",
       img2: img2,
       img3: img3
     };

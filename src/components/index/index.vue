@@ -25,7 +25,7 @@
         components: { section1, section2, section3 },
         data() {
             return {
-                isSection1: true,
+                isSection1: false,
                 isSection2: false,
                 isSection3: false,
             }
