@@ -1,12 +1,13 @@
+import '@/components/index/section1'
+import '@/components/index/section2'
+import '@/components/index/section3'
 import './page1.scss'
-import '../../components/index/section1'
-import '../../components/index/section2'
-import '../../components/index/section3'
-import Vue from 'vue'
+import { createApp } from 'vue'
 
-Vue.component('index2', {
-    template: (
-        `<div v-cloak>
+const app = createApp({})
+app.component('index2', {
+    template: `
+      <div v-cloak>
             <section1 
                 v-if="isSection1"
                 @showSection2="showSection2"
@@ -21,8 +22,8 @@ Vue.component('index2', {
             />
             <button @click="toPage2">to page2</button>
             <button @click="toIndex">to index</button>
-        </div>`
-    ),
+        </div>
+    `,
     data() {
         return {
             isSection1: true,
@@ -57,7 +58,4 @@ Vue.component('index2', {
         },
     }
 })
-new Vue({
-    el: '#index'
-})
-
+app.mount('#index')

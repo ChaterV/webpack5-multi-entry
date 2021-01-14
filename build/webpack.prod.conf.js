@@ -20,7 +20,6 @@ const webpackConfigProd = {
 		publicPath: './'
 	},
 
-	devtool: 'nosources-source-map',
 
 	plugins: [
 		new CleanWebpackPlugin({

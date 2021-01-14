@@ -1,22 +1,23 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
-const originalPush = VueRouter.prototype.push;
-VueRouter.prototype.push = function push(location) {
-    return originalPush.call(this, location).catch(err => err)
-};
+const routes = [
+    {
+        path: '/aaa',
+        component: () => import('@/components/index/section1')
+    },
+    {
+        path: '/bbb',
+        component: () => import('@/components/index/section2')
+    },
+    {
+        path: '/ccc',
+        component: () => import('@/components/index/section3')
+    }
+]
 
-Vue.use(VueRouter)
-
-export default new VueRouter({
-    routes: [
-        {
-            path: '/aaa',
-            component: () => import('@/components/index/section1')
-        },
-        {
-            path: '/bbb',
-            component: () => import('@/components/index/section2')
-        }
-    ]
+const router = createRouter({
+    history: createWebHashHistory(process.env.BASE_URL),
+    routes
 })
+
+export default router

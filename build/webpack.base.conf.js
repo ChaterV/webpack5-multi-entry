@@ -1,7 +1,7 @@
 const path = require('path')
 const glob = require("glob")
 const webpack = require("webpack")
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const {VueLoaderPlugin} = require('vue-loader')
 
 const EC = require("./entry-config")
 const entryConfig = EC.ENTRY_CONF       // 多页面指定入口 js 配置
@@ -84,7 +84,8 @@ module.exports = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             '@': path.resolve(__dirname, '../src'),
-            'vue$': 'vue/dist/vue.esm.js'
+            vue: "vue/dist/vue.esm-bundler.js"
+            // 'vue$': 'vue/dist/vue.esm.js'
         }
     },
     externals: {
@@ -104,13 +105,13 @@ module.exports = {
                     // 设置优先级，防止和自定义的公共代码提取时被覆盖，不进行打包
                     priority: 10,
                 },
-                utils: {
-                    // 抽离自己写的公共代码，common这个名字可以随意起
-                    chunks: 'initial',
-                    name: 'common', // 任意命名
-                    minSize: 0, // 只要超出0字节就生成一个新包
-                    minChunks: 2
-                }
+                // utils: {
+                //     // 抽离自己写的公共代码，common这个名字可以随意起
+                //     chunks: 'initial',
+                //     name: 'common', // 任意命名
+                //     minSize: 0, // 只要超出0字节就生成一个新包
+                //     minChunks: 2
+                // }
             }
         }
     },
@@ -123,7 +124,9 @@ module.exports = {
         // }]),
         new webpack.DefinePlugin({
             'process.env': process.env.ENV_LIST,
-            'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"'
+            // 'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"',
+            "__VUE_OPTIONS_API__": true,
+            "__VUE_PROD_DEVTOOLS__": false,
         }),
         new VueLoaderPlugin()
     ]

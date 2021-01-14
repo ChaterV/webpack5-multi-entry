@@ -44,7 +44,7 @@ const HOST_ENV = JSON.parse(process.env.npm_config_argv).original[3] || ""
 //没有设置环境，则默认为第一个
 const HOST_CONF = HOST_ENV ? ENV_LIST.find(item => item.envName === HOST_ENV) : ENV_LIST[0]
 // 把环境常量挂载到process.env方便客户端使用
-process.env.BASE_URL = HOST_CONF.baseUrl
+// process.env.BASE_URL = HOST_CONF.baseUrl
 process.env.ENV_LIST = JSON.stringify(HOST_CONF)
 
 module.exports.HOST_CONF = HOST_CONF

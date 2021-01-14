@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import Vue from "vue";
 import audio from "../../assets/biubiu.mp3";
 import img2 from "../../assets/images/timg.jpg";
 import img3 from "@/assets/images/timg.jpg";
@@ -54,31 +53,11 @@ export default {
     };
   },
   created() {
-    console.log(process.env);
-    Vue.prototype.clickButton = () => {
-      let buttonAudio = document.getElementById("buttonAudio");
-      buttonAudio.setAttribute("src", audio);
-      buttonAudio.play();
-    };
-    document.body.addEventListener("click", function(e) {
-      let event = e || window.event;
-      let target = event.target || event.srcElement;
-      let clickMusic = target.getAttribute("class") || "";
-      // console.log('clickMusic',clickMusic)
-      if (
-        clickMusic.indexOf("m_btn") > -1 ||
-        clickMusic.indexOf("ivu-btn") > -1
-      ) {
-        Vue.prototype.clickButton();
-      } else {
-        return false;
-      }
-      // Vue.prototype.clickButton();
-    });
+
   },
   mounted() {},
   updated() {},
-  beforeDestroy() {},
+  beforeUnmount() {},
   watch: {},
   methods: {}
 };
@@ -113,4 +92,7 @@ export default {
   opacity: .8;
   transform: translateX(-20px);
 }
+</style>
+<style lang="scss">
+@import "src/css/common.scss";
 </style>
