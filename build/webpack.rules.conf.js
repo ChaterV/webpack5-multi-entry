@@ -25,6 +25,10 @@ const rules = [
         use: process.env.NODE_ENV === "development" ? _dev : _pro
     },
     {
+        test: /\.less$/,
+        use:[ 'style-loader','css-loader','less-loader'],
+    },
+    {
         test: /\.js$/,
         exclude: "/node_modules/",
         use: [{
@@ -32,6 +36,17 @@ const rules = [
         }],
         // 不检查node_modules下的js文件
         // exclude: "/node_modules/"
+    },
+    {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-react', '@babel/preset-env'],
+                plugins: ['@babel/plugin-proposal-class-properties']
+            }
+        }
     },
     {
         test: /\.vue$/,
