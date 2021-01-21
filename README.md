@@ -1,6 +1,6 @@
 # webpack5多入口配置
 
-基于 webpack5 的多入口配置，支持 Vue3.x + html 渐进式写法，支持 vue-router, 支持 element ui 等第三方框架的引用。
+基于 webpack5 的多入口配置，同时支持 Vue3 以及 React。
 
 ### 特性
 
@@ -41,7 +41,7 @@ cd webpack5-multi-entry
 npm install
 
 # develop
-npm run dev
+npm start
 
 # production
 npm run build
