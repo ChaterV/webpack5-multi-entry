@@ -125,7 +125,7 @@ const rules = [
                 limit: 10,
                 name: '[name].[ext]',
                 // publicPath: "./",
-                outputPath: "static/icon"
+                outputPath: "static/ico"
             }
         }],
     },

@@ -3,6 +3,7 @@ const {merge} = require("webpack-merge")
 const {CleanWebpackPlugin} = require("clean-webpack-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const webpackConfigBase = require('./webpack.base.conf')
 const TerserPlugin = require('terser-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -50,7 +51,8 @@ const webpackConfigProd = {
 			minRatio: 0.8, // 默认: 0.8
 			// 是否删除源文件，默认: false
 			deleteOriginalAssets: false
-		})
+		}),
+		new FriendlyErrorsWebpackPlugin()
 	],
 	optimization: {
 		minimizer: [
