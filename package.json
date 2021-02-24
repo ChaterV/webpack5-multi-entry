@@ -15,7 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
-    "autoprefixer": "^10.2.1",
+    "autoprefixer": "9.0.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
