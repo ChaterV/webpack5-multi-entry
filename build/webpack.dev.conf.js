@@ -39,7 +39,7 @@ const webpackConfigDev = merge(webpackConfigBase, {
         openPage: devOpenPage || 'index.html', // 配置 run dev 默认打开哪个页面
         publicPath: '/',
         clientLogLevel: "warning",
-        // host: getIPAddress(),
+        host: getIPAddress(),
         // inline: true, //实时刷新
         overlay: true, // 浏览器页面上显示错误
         open: true, // 开启浏览器
@@ -52,7 +52,7 @@ const webpackConfigDev = merge(webpackConfigBase, {
 })
 
 module.exports = new Promise((resolve, reject) => {
-    portfinder.basePort = 8787
+    portfinder.basePort = 8081
     portfinder.getPort((err, port) => {
         if (err) {
             reject(err)
@@ -61,7 +61,8 @@ module.exports = new Promise((resolve, reject) => {
             webpackConfigDev.plugins.push(new FriendlyErrorsWebpackPlugin({
                 compilationSuccessInfo: {
                     messages: [
-                        `server running at:   http://localhost:${port}`
+                        `server running at:   \n - Local:   http://localhost:${port}  \n - Network: http://${webpackConfigDev.devServer.host}:${port}
+                        `
                     ],
                 },
             }))
