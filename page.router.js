@@ -9,27 +9,7 @@ const page_router = [
       useTemplate: false,     // 是否指定 html 模板
       useEntry: false,        // 是否指定入口 js
       isDevIndexPage: false,   // 是否 为 npm run dev 时默认打开的页面
-    },
-  },
-  {
-    name: 'page1',
-    template: 'index.html',
-    entry: 'index.js',
-    meta: {
-      useTemplate: false,
-      useEntry: false,
-      isDevIndexPage: false,
-    },
-  },
-  {
-    name: 'page2',
-    template: 'index.html',
-    entry: 'index.js',
-    meta: {
-      useTemplate: false,
-      useEntry: false,
-      isDevIndexPage: true,
-    },
+    }
   },
 ];
 
