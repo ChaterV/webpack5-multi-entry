@@ -4,7 +4,6 @@ md/
 dist/
 .sass-cache/
 npm-debug.log*
-package-lock.json
 # Editor directories and files
 .idea
 .vscode
