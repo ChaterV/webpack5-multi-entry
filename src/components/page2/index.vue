@@ -1,5 +1,5 @@
 <template>
-  <div id="page2" class="page2">
+  <div id="page2-tp" class="page2">
     <h3>This is page2</h3>
     <div class="imgs">
       <h5>iconfont:</h5>
@@ -64,23 +64,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
-/* #page2 {
-} */
-#page2 h3 {
+ #page2-tp {
+   display: flex;
+   flex-direction: column;
+}
+#page2-tp h3 {
   color: #f74b57;
   text-align: center;
 }
-#page2 .imgs {
+#page2-tp .imgs {
   margin: 10px;
   text-align: center;
 }
-#page2 img {
+#page2-tp img {
   width: 50%;
 }
-#page2 #buttonAudio {
+#page2-tp #buttonAudio {
   display: none;
 }
-#page2 .bg {
+#page2-tp .bg {
   margin: 10px auto;
   width: 500px;
   height: 300px;
@@ -92,7 +94,4 @@ export default {
   opacity: .8;
   transform: translateX(-20px);
 }
-</style>
-<style lang="scss">
-@import "src/css/common.scss";
 </style>
