@@ -58,8 +58,5 @@ npm run analyz
 #### 2021.02.26
 
 - 新增 Tailwindcss 支持，简化环境变量（开发环境和生产环境），具体变量可参考 build -> env.config.js
-
-```html
-    如不需要 tailwindcss，可删除 package.json 中 tailwindcss依赖项，删除根目录下 tailwind.config.js，删除 postcss.config.js 中 tailwindcss 项。
-    当然如果项目中没有引入 tailwindcss，在编译和打包时并不会有 tailwindcss 依赖，实际中不进行以上操作也没有影响（代码洁癖者当我没说）
-```
+    - 如不需要 tailwindcss，可删除 package.json 中 tailwindcss依赖项，删除根目录下 tailwind.config.js，删除 postcss.config.js 中 tailwindcss 项。
+      当然如果项目中没有引入 tailwindcss，在编译和打包时并不会有 tailwindcss 依赖，实际中不进行以上操作也没有影响（代码洁癖者当我没说）
