@@ -18,7 +18,3 @@ import router from "@/router";
       }
     }
 </script>
-
-<style lang="scss">
-@import "src/css/common.scss";
-</style>

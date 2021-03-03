@@ -8,33 +8,22 @@ const path = require('path')
  * baseUrl: 这个环境下面的api 请求的域名
  * assetsPublicPath: 静态资源存放的域名，未指定则使用相对路径
  * */
-const ENV_LIST = [{
-        //本地环境
-        envName: 'local',
-        dirName: 'local',
-        baseUrl: 'http://199.xxx.xxx',
-        assetsPublicPath: '/'
-    },
+const ENV_LIST = [
     {
         //开发环境
         envName: 'dev',
         dirName: 'dev',
         baseUrl: 'http://100.xxx.xxx',
-        assetsPublicPath: '/'
-    },
-    {
-        //测试环境
-        envName: 'test',
-        dirName: path.resolve(__dirname, '../dist'),
-        baseUrl: 'http://111.xxx.xxx',
-        assetsPublicPath: '/'
+        assetsPublicPath: '/',
+        NODE_ENV: 'development'
     },
     {
         //生产环境
         envName: 'pro',
         dirName: path.resolve(__dirname, '../dist'),
         baseUrl: 'http://122.xxx.xxx',
-        assetsPublicPath: '/'
+        assetsPublicPath: '/',
+        NODE_ENV: 'production'
     },
 
 ]
