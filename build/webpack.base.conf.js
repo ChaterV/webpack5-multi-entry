@@ -1,6 +1,7 @@
 const path = require('path')
 const glob = require("glob")
 const webpack = require("webpack")
+const WebpackBar = require('webpackbar')
 const {VueLoaderPlugin} = require('vue-loader')
 
 const EC = require("./entry-config")
@@ -128,7 +129,8 @@ module.exports = {
             "__VUE_OPTIONS_API__": true,
             "__VUE_PROD_DEVTOOLS__": false,
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new WebpackBar()
     ]
 }
 

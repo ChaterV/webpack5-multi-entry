@@ -1,5 +1,5 @@
 <template>
-    <div v-cloak>
+    <div v-cloak class="w-[300px] mt-[20px]">
 <!--        <section1-->
 <!--                v-if="section.isSection1"-->
 <!--                @showSection2="showSection('isSection2')"-->
@@ -13,7 +13,7 @@
 <!--                @showSection1="showSection('isSection1')"-->
 <!--        />-->
         <router-view />
-        <button @click="toPage1">to page1</button>
+        <button class="mr-[10px] bg-[#3a7bff] p-[10px] text-[#fff] rounded-[5px] hover:bg-[#1c63c9] transform-gpu transition-all" @click="toPage1">to page1</button>
         <button @click="toRouter">to router</button>
     </div>
 </template>
