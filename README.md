@@ -1,6 +1,6 @@
-# webpack5多入口配置
+# webpack5搭建 vue3 和 react
 
-基于 webpack5 的多入口配置，同时支持 Vue3 以及 React。
+基于 webpack5 的多页面 or 单页面配置，同时支持 Vue3 以及 React。
 
 ### 特性
 
@@ -55,14 +55,24 @@ npm run analyz
 
 ### 更新日志
 
+### 2021.05.12
+
+- 依赖更新
+
 ### 2021.04.29
 
-- 升级 Tailwindcss 版本，默认开启 jit 模式，该模式下构建速度更快，文件更小；支持 class 任意值变体。
+- 升级 Tailwindcss 版本，默认开启 jit 模式，该模式下构建速度更快，文件更小；支持 class 任意值变体。[Just-in-Time ModeTailwind](https://tailwindcss.com/docs/just-in-time-mode)
 
     - 例如直接写入 class='w-[543px]',那么会被直接编译为 width: 543px; 其他诸如颜色、圆角、背景图均支持。
 
 #### 2021.02.26
 
 - 新增 Tailwindcss 支持，简化环境变量（开发环境和生产环境），具体变量可参考 build -> env.config.js
+
     - 如不需要 tailwindcss，可删除 package.json 中 tailwindcss依赖项，删除根目录下 tailwind.config.js，删除 postcss.config.js 中 tailwindcss 项。
+      
       当然如果项目中没有引入 tailwindcss，在编译和打包时并不会有 tailwindcss 依赖，实际中不进行以上操作也没有影响（代码洁癖者当我没说）
+    
+    - [tailwind 中文网](https://www.tailwindcss.cn/) （文档可能非最新）
+
+    - [tailwind 英文官网](https://tailwindcss.com/)

@@ -8,7 +8,7 @@ const page_router = [
     meta: { // 路由元 信息
       useTemplate: false,     // 是否指定 html 模板
       useEntry: false,        // 是否指定入口 js
-      isDevIndexPage: true,   // 是否 为 npm run dev 时默认打开的页面
+      isDevIndexPage: true,   // 是否 为 本地开发 时默认打开的页面
     }
   },
 ];
