@@ -55,11 +55,11 @@ npm run analyz
 
 ### 更新日志
 
-### 2021.05.12
+#### 2021.05.12
 
 - 依赖更新
 
-### 2021.04.29
+#### 2021.04.29
 
 - 升级 Tailwindcss 版本，默认开启 jit 模式，该模式下构建速度更快，文件更小；支持 class 任意值变体。[Just-in-Time ModeTailwind](https://tailwindcss.com/docs/just-in-time-mode)
 
