@@ -55,6 +55,12 @@ npm run analyz
 
 ### 更新日志
 
+#### 2021.07.12
+
+- 修复 less 无法编译的问题
+
+- 修复 compression-webpack-plugin 插件编译可能会重名而导致打包失败的问题
+
 #### 2021.05.12
 
 - 依赖更新
@@ -62,8 +68,6 @@ npm run analyz
 #### 2021.04.29
 
 - 升级 Tailwindcss 版本，默认开启 jit 模式，该模式下构建速度更快，文件更小；支持 class 任意值变体。[Just-in-Time ModeTailwind](https://tailwindcss.com/docs/just-in-time-mode)
-
-    - 例如直接写入 class='w-[543px]',那么会被直接编译为 width: 543px; 其他诸如颜色、圆角、背景图均支持。
 
 #### 2021.02.26
 

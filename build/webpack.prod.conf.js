@@ -40,7 +40,7 @@ const webpackConfigProd = {
 			}
 		}),
 		new CompressionWebpackPlugin({
-			filename: '[path].gz[query]',
+			filename: '[path][name][fragment].gz[query]',
 			test: new RegExp(
 				'\\.(js|css)$' // 压缩 js 与 css
 			),
