@@ -15,6 +15,7 @@
         <router-view />
         <button class="mr-[10px] bg-[#3a7bff] p-[10px] text-[#fff] rounded-[5px] hover:bg-[#1c63c9] transform-gpu transition-all" @click="toPage1">to page1</button>
         <button @click="toRouter">to router</button>
+        <button @click="toReact">to react</button>
     </div>
 </template>
 
@@ -48,6 +49,9 @@
         const toPage1 = () => {
           window.location.href = 'page1.html'
         }
+        const toReact = () => {
+          window.location.href = 'pageReact.html'
+        }
         const toRouter = () => {
           router.push('/aaa')
         }
@@ -55,7 +59,8 @@
           ...dataAsRef,
           showSection,
           toPage1,
-          toRouter
+          toRouter,
+          toReact
         }
       }
     }

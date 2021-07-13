@@ -1,32 +1,34 @@
 const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
-const _dev = ["style-loader", "css-loader", 'postcss-loader', "sass-loader"]
-const _pro = [
-  // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/275
-  // mini-css-extract-plugin 插件打包分离 css ，生成环境会丢掉 .vue 文件里面的 <style>里面的 css 问题：
-  // 解决：删除 package.json 里面的 sideEffects 配置就可以了
-    {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-            // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/403
-            // 这里的 publicPath 和 url-loader / file-loader 的 publicPath 有冲突
-            // ....., when I remove file-loader's publicPath everything works fine
-            publicPath: '../../',
-            // hmr: process.env.NODE_ENV !== 'production',
-        }
-    },
-    'css-loader',
-    'postcss-loader',
-    'sass-loader'
-]
+const dev_loader = (loader) => {
+    return [
+        "style-loader",
+        "css-loader",
+        'postcss-loader',
+        loader
+    ]
+}
+const pro_loader = (loader) => {
+    return [
+        {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+                publicPath: '../../',
+            }
+        },
+        'css-loader',
+        'postcss-loader',
+        loader
+    ]
+}
 const rules = [
     {
         test: /\.(css|scss|sass)$/,
         // 区别开发环境和生成环境
-        use: process.env.NODE_ENV === "development" ? _dev : _pro
+        use: process.env.NODE_ENV === "development" ? dev_loader('sass-loader') : pro_loader('sass-loader')
     },
     {
         test: /\.less$/,
-        use:[ 'style-loader','css-loader','postcss-loader','less-loader'],
+        use: process.env.NODE_ENV === "development" ? dev_loader('less-loader') : pro_loader('less-loader')
     },
     {
         test: /\.js$/,

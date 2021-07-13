@@ -7,10 +7,6 @@ const webpack = require("webpack")
 const os = require('os')
 
 
-const EC = require("./entry-config")
-const devOpenPage = EC.DEV_OPEN_PAGE  // 配置 run dev 默认打开哪个页面
-
-
 function getIPAddress() {
     const interfaces = os.networkInterfaces()
     for (let devName in interfaces) {
@@ -35,8 +31,7 @@ const webpackConfigDev = merge(webpackConfigBase, {
     },
     devtool: 'eval-cheap-module-source-map',
     devServer: {
-        contentBase: path.join(__dirname, "../src/pages/index"),
-        openPage: devOpenPage || 'index.html', // 配置 run dev 默认打开哪个页面
+        contentBase: path.join(__dirname, "../dist"),
         publicPath: '/',
         clientLogLevel: 'silent',
         noInfo: true,
