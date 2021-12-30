@@ -4,7 +4,6 @@ import router from '@/router/index'
 import '@/css/common.scss'
 import '@/css/tw.scss'
 
-const app = createApp({})
-app.component('index',Index)
+const app = createApp(Index)
 app.use(router)
-app.mount('#index')
+app.mount('#app')

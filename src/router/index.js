@@ -2,15 +2,19 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
     {
-        path: '/aaa',
+        path: '/',
+        redirect: '/section1'
+    },
+    {
+        path: '/section1',
         component: () => import('@/components/index/section1')
     },
     {
-        path: '/bbb',
+        path: '/section2',
         component: () => import('@/components/index/section2')
     },
     {
-        path: '/ccc',
+        path: '/section3',
         component: () => import('@/components/index/section3')
     }
 ]

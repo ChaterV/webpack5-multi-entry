@@ -1,36 +1,13 @@
 <template>
-    <div v-cloak class="w-[300px] mt-[20px]">
-<!--        <section1-->
-<!--                v-if="section.isSection1"-->
-<!--                @showSection2="showSection('isSection2')"-->
-<!--        />-->
-<!--        <section2-->
-<!--                v-if="section.isSection2"-->
-<!--                @showSection3="showSection('isSection3')"-->
-<!--        />-->
-<!--        <section3-->
-<!--                v-if="section.isSection3"-->
-<!--                @showSection1="showSection('isSection1')"-->
-<!--        />-->
+    <div v-cloak class="w-[300px] my-[20px] mx-auto">
         <router-view />
-        <button class="mr-[10px] bg-[#3a7bff] p-[10px] text-[#fff] rounded-[5px] hover:bg-[#1c63c9] transform-gpu transition-all" @click="toPage1">to page1</button>
-        <button @click="toRouter">to router</button>
-        <button @click="toReact">to react</button>
+        <button class="mt-[10px] mr-[10px] bg-[#3a7bff] p-[10px] text-[#fff] rounded-[5px] hover:bg-[#1c63c9] transform-gpu transition-all" @click="toReact">to react page</button>
     </div>
 </template>
 
 <script>
-    // import section1 from "@/components/index/section1"
-    // import section2 from "@/components/index/section2"
-    // import section3 from "@/components/index/section3"
     import { reactive, toRefs } from 'vue'
-    import router from '@/router/index'
     export default {
-        // components: {
-        //   'section1': section1,
-        //   'section2': section2,
-        //   'section3': section3,
-        // },
       setup() {
         const data = reactive({
           section: {
@@ -46,20 +23,12 @@
           })
           data.section[value] = true
         }
-        const toPage1 = () => {
-          window.location.href = 'page1.html'
-        }
         const toReact = () => {
           window.location.href = 'pageReact.html'
-        }
-        const toRouter = () => {
-          router.push('/aaa')
         }
         return {
           ...dataAsRef,
           showSection,
-          toPage1,
-          toRouter,
           toReact
         }
       }

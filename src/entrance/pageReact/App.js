@@ -1,9 +1,14 @@
 import React from "react";
-function App() {
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PageReact from "@/components/pageReact";
+
+const App = () => {
   return (
-    <div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut cum cupiditate doloremque ducimus fuga harum impedit laudantium, maxime mollitia pariatur placeat quas quidem reiciendis rem tempora velit voluptate voluptates.
-    </div>
+    <Router>
+        <Switch>
+            <Route path='/' component={PageReact} />
+        </Switch>
+    </Router>
   );
 }
 

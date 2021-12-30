@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>section 2</div>
-        <button @click="showSection3">show section 3</button>
+        <button class="text-[#3a7bff]" @click="showSection3">show section 3</button>
     </div>
 </template>
 
@@ -10,7 +10,7 @@ import router from "@/router";
     export default {
       setup() {
         const showSection3 = () => {
-          router.push('/ccc')
+          router.push('/section3')
         }
         return {
           showSection3
