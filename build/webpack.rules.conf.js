@@ -28,7 +28,21 @@ const rules = [
     },
     {
         test: /\.less$/,
-        use: process.env.NODE_ENV === "development" ? dev_loader('less-loader') : pro_loader('less-loader')
+        use: process.env.NODE_ENV === "development" ? dev_loader({
+            loader: "less-loader",
+            options: {
+                lessOptions: {
+                    javascriptEnabled: true
+                }
+            }
+        },) : pro_loader({
+            loader: "less-loader",
+            options: {
+                lessOptions: {
+                    javascriptEnabled: true
+                }
+            }
+        },)
     },
     {
         test: /\.js$/,
@@ -94,7 +108,7 @@ const rules = [
         }
     },
     {
-        test: /\.(eot|woff2?|ttf|svg)$/,
+        test: /\.(woff2?|eot|ttf|otf|ttc|svg)$/,
         use: [{
             loader: "url-loader",
             options: {
