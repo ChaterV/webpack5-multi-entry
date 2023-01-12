@@ -2,7 +2,7 @@
 
 基于 webpack5 的多页面 or 单页面脚手架，同时支持 Vue3 以及 React。
 
-### ✨ 特性
+## ✨ 特性
 
 - 支持自定义入口
 
@@ -25,13 +25,10 @@
 - 支持 less 和 sass
 
 
-- 支持图片(png/jpg)、gif 文件构建时压缩
-
-
 - 支持 Tailwindcss 
 
 
-### 🔨 使用
+## 🔨 使用
 
 ```bash
 # clone the project
@@ -53,7 +50,17 @@ npm run build
 npm run analyz
 ```
 
-### 📍 更新日志
+### page.router.js
+
+入口文件配置，默认入口文件为index目录（暂不支持修改默认入口文件）
+
+
+### build/env-config.js
+
+全局环境变量，可自定义添加修改
+
+
+## 📍 更新日志
 
 #### 2023.01.12
 
@@ -62,6 +69,7 @@ npm run analyz
 - 更新 react 示例至 v18 版本
 - 更新依赖包
 - 新增 lock 文件
+- 不再支持图片(png/jpg)、gif 文件构建时压缩
 
 #### 2022.05.30
 
