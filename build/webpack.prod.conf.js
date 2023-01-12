@@ -1,9 +1,9 @@
 const path = require('path')
 const {merge} = require("webpack-merge")
 const {CleanWebpackPlugin} = require("clean-webpack-plugin")
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin  =  require('mini-css-extract-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
 const webpackConfigBase = require('./webpack.base.conf')
 const TerserPlugin = require('terser-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -34,11 +34,7 @@ const webpackConfigProd = {
 			chunkFilename: './static/css/[name].[contenthash].css'
 		}),
 		// 压缩css
-		new OptimizeCSSPlugin({
-			cssProcessorOptions: {
-				safe: true
-			}
-		}),
+		new CssMinimizerPlugin(),
 		new CompressionWebpackPlugin({
 			filename: '[path][name][fragment].gz[query]',
 			test: new RegExp(

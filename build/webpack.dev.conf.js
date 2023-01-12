@@ -1,6 +1,6 @@
 const path = require('path')
 const {merge} = require("webpack-merge")
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const webpackConfigBase = require('./webpack.base.conf')
 const webpack = require("webpack")
@@ -31,16 +31,8 @@ const webpackConfigDev = merge(webpackConfigBase, {
     },
     devtool: 'eval-cheap-module-source-map',
     devServer: {
-        contentBase: path.join(__dirname, "../dist"),
-        publicPath: '/',
-        clientLogLevel: 'silent',
-        noInfo: true,
         host: '0.0.0.0',
-        // inline: true, //实时刷新
-        overlay: true, // 浏览器页面上显示错误
         open: false, // 开启浏览器
-        quiet: true,
-        hot: true
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()

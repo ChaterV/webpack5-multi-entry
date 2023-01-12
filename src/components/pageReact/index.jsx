@@ -1,6 +1,7 @@
 import React from "react";
 
 const PageReact = () => {
+    console.log(process.env)
     return (
         <div className='w-full text-center'>
             <div>这是 React 页面</div>
